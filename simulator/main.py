@@ -1,10 +1,13 @@
+import os
 from os_detector import detect_os
 from file_scanner import scan_pdfs
 from encryptor_sim import simulate_encryption
 from logger import log
 
-DOCUMENTS = "../sandbox/documentos"
-DESKTOP = "../sandbox/escritorio"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DOCUMENTS = os.path.join(BASE_DIR, "..", "sandbox", "documentos")
+DESKTOP = os.path.join(BASE_DIR, "..", "sandbox", "escritorio")
 
 def main():
     log("=== Inicio de simulación ===")
