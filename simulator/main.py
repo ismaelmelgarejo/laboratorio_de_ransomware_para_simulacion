@@ -1,5 +1,6 @@
 import os
 import platform
+import subprocess
 from os_detector import detect_os
 from file_scanner import scan_pdfs
 from encryptor_sim import simulate_encryption
@@ -17,9 +18,9 @@ def open_image(path):
     if os_name == "Windows":
         os.startfile(path)
     elif os_name == "Darwin":
-        os.system(f"open '{path}'")
+        subprocess.run(["open", path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     elif os_name == "Linux":
-        os.system(f"xdg-open '{path}'")
+        subprocess.run(["xdg-open", path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 def main():
     log("=== Inicio de simulación ===")
