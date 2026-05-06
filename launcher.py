@@ -1,7 +1,10 @@
 import time
+import sys
 import os
 import subprocess
 import platform
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SIMULATOR_PATH = os.path.join(BASE_DIR, "simulator", "main.py")
 
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
@@ -27,11 +30,9 @@ def fake_loading():
 
 def run_simulator():
     typing_effect("\n[+] Ejecutando simulación...\n")
-    
-    if platform.system() == "Windows":
-        subprocess.run(["python", "simulator/main.py"])
-    else:
-        subprocess.run(["python3", "simulator/main.py"])
+
+    import sys
+    subprocess.run([sys.executable, SIMULATOR_PATH])
 
 def main():
     clear()
