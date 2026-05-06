@@ -27,6 +27,9 @@ lab-ransomware/
 ├── logs/
 │   └── activity.log
 │
+├── assets/
+│   └── alert.png
+│
 └── README.md
 ```
 

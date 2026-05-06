@@ -1,13 +1,25 @@
 import os
+import platform
 from os_detector import detect_os
 from file_scanner import scan_pdfs
 from encryptor_sim import simulate_encryption
 from logger import log
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+IMAGE_PATH = os.path.join(BASE_DIR, "..", "assets", "alert.png")
 
 DOCUMENTS = os.path.join(BASE_DIR, "..", "sandbox", "documentos")
 DESKTOP = os.path.join(BASE_DIR, "..", "sandbox", "escritorio")
+
+def open_image(path):
+    os_name = platform.system()
+
+    if os_name == "Windows":
+        os.startfile(path)
+    elif os_name == "Darwin":
+        os.system(f"open '{path}'")
+    elif os_name == "Linux":
+        os.system(f"xdg-open '{path}'")
 
 def main():
     log("=== Inicio de simulación ===")
@@ -23,6 +35,8 @@ def main():
 
     create_ransom_note(DESKTOP)
 
+    open_image("../assets/alert.png")
+    
     log("=== Fin de simulación ===")
 
 def create_ransom_note(path):
