@@ -35,8 +35,8 @@ def main():
 
     create_ransom_note(DESKTOP)
 
-    open_image("../assets/alert.png")
-    
+    open_image(IMAGE_PATH)
+
     log("=== Fin de simulación ===")
 
 def create_ransom_note(path):
